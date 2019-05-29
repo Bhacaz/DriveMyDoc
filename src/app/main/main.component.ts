@@ -8,16 +8,14 @@ import {DriveService} from '../drive/drive.service';
 })
 export class MainComponent implements OnInit {
 
+  user: any;
+
   constructor(
     private driveService: DriveService
   ) { }
 
   ngOnInit() {
-
-  }
-
-  saveUserInlocalStorage() {
-    localStorage.setItem('user', JSON.stringify(this.user));
+    this.getFilesRoot();
   }
 
   getUserFromlocalStorage() {

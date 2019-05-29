@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DriveService} from './drive/drive.service';
+import {AuthService} from './auth.service';
 
 
 @NgModule({
@@ -24,7 +25,10 @@ import {DriveService} from './drive/drive.service';
     HttpClientModule,
     MatToolbarModule
   ],
-  providers: [DriveService],
+  providers: [
+    DriveService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

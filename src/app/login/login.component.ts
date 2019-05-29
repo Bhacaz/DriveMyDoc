@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {AuthService} from '../auth.service';
 
 declare const gapi: any;
 
@@ -10,7 +11,6 @@ declare const gapi: any;
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
-  user: any;
   auth2: any;
 
   private clientId: string = '798021972045-vo31kgilujafp0q9gibdmfe7jr5rau25.apps.googleusercontent.com';
@@ -20,13 +20,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
     'https://www.googleapis.com/auth/drive.readonly'
   ].join(' ');
 
-  constructor(private router: Router, private ngZone: NgZone) { }
+  constructor(
+    private router: Router,
+    private ngZone: NgZone,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
 
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.googleInit();
   }
 
@@ -34,8 +38,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: this.clientId,
-        cookiepolicy: 'single_host_origin',
-        scope: this.scope
+        scope: this.scope,
+        redirect_uri: '/'
       });
       this.attachSignin(document.getElementById('googleBtn'));
     });
@@ -44,19 +48,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   attachSignin(element) {
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
-
-        let profile = googleUser.getBasicProfile();
-        this.user = {};
-        this.user.token = googleUser.getAuthResponse().access_token;
-        this.user.email = profile.getEmail();
-        this.user.name = profile.getName();
-        this.user.imageUrl = profile.getImageUrl();
-        console.log(this.user);
+        this.authService.initSession(googleUser);
         this.ngZone.run(() => this.router.navigate(['/']));
-
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });
   }
 
+  success() {
+    console.log('hello');
+  }
 }

@@ -30,7 +30,6 @@ export class DriveService {
   }
 
   getUserFromlocalStorage() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return !user || user.token;
+    return localStorage.getItem('token');
   }
 }
