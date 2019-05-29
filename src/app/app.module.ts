@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DriveService} from './drive/drive.service';
 import {AuthService} from './auth.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SideBarNavigatorComponent } from './side-bar-navigator/side-bar-navigator.component';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     AppComponent,
     LoginComponent,
     MainComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    SideBarNavigatorComponent
   ],
   imports: [
     BrowserModule,
