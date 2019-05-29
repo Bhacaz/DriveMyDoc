@@ -1,9 +1,1 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>DriveMyDoc</span>
-    <span class="spacer"></span>
-    <span *ngIf="!user"><a  id="googleBtn">Login in</a></span>
-    <!--<span *ngIf="user"><button (click)="clearUserlocalStorage()">Logout</button></span>-->
-    <span *ngIf="user"><img class="image-profile" [src]="user.imageUrl"></span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<app-toolbar></app-toolbar>

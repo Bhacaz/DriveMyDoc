@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
 import {AuthService} from '../auth.service';
 
 declare const gapi: any;
@@ -21,11 +20,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ].join(' ');
 
   constructor(
-    private router: Router,
     private ngZone: NgZone,
     private authService: AuthService
   ) {
-    window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
+
   }
 
   ngOnInit() {
@@ -42,11 +40,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
         client_id: this.clientId,
         scope: this.scope
       });
+      window['onSignIn'] = (user) => this.ngZone.run(() => this.onSignIn(user));
     });
   }
 
   public onSignIn(googleUser) {
     this.authService.initSession(googleUser);
-    this.ngZone.run(() => this.router.navigate(['/']));
   }
 }

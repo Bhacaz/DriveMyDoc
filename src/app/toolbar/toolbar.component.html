@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>DriveMyDoc</span>
+    <span class="spacer"></span>
+    <span id="image-span">
+        <img class="image-profile" [src]="user.imageUrl" [matMenuTriggerFor]="appMenu">
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
