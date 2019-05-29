@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private router: Router,
     private ngZone: NgZone,
     private authService: AuthService
-  ) { }
+  ) {
+    window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
+  }
 
   ngOnInit() {
 
@@ -38,24 +40,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: this.clientId,
-        scope: this.scope,
-        redirect_uri: '/'
+        scope: this.scope
       });
-      this.attachSignin(document.getElementById('googleBtn'));
     });
   }
 
-  attachSignin(element) {
-    this.auth2.attachClickHandler(element, {},
-      (googleUser) => {
-        this.authService.initSession(googleUser);
-        this.ngZone.run(() => this.router.navigate(['/']));
-      }, (error) => {
-        alert(JSON.stringify(error, undefined, 2));
-      });
-  }
-
-  success() {
-    console.log('hello');
+  public onSignIn(googleUser) {
+    this.authService.initSession(googleUser);
+    this.ngZone.run(() => this.router.navigate(['/']));
   }
 }
