@@ -11,6 +11,8 @@ import {DriveService} from './drive/drive.service';
 import {AuthService} from './auth.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SideBarNavigatorComponent } from './side-bar-navigator/side-bar-navigator.component';
+import { FirstLevelFolderComponent } from './side-bar-navigator/first-level-folder/first-level-folder.component';
+import { FileViewerComponent } from './file-viewer/file-viewer.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { SideBarNavigatorComponent } from './side-bar-navigator/side-bar-navigat
     LoginComponent,
     MainComponent,
     ToolbarComponent,
-    SideBarNavigatorComponent
+    SideBarNavigatorComponent,
+    FirstLevelFolderComponent,
+    FileViewerComponent
   ],
   imports: [
     BrowserModule,

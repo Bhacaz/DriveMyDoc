@@ -20,10 +20,10 @@ export class MainComponent implements OnInit {
     this.getFilesRoot();
   }
 
-  getUserFromlocalStorage() {
-    this.user = JSON.parse(localStorage.getItem('user'));
-  }
-
+  // getUserFromlocalStorage() {
+  //   this.user = JSON.parse(localStorage.getItem('user'));
+  // }
+  //
   // clearUserlocalStorage() {
   //   localStorage.removeItem('user');
   //   this.user = undefined;
