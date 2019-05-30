@@ -1,5 +1,4 @@
 
-<!--<mat-list-item> {{file.name}} </mat-list-item>-->
-<span>
-  {{file.name}}
-</span>
+<a class="file-redirect" [routerLink]="[file.id]">
+  <mat-list-item>{{file.name}}</mat-list-item>
+</a>

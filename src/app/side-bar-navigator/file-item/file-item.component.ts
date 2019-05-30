@@ -16,4 +16,7 @@ export class FileItemComponent implements OnInit {
 
   }
 
+  onClickFile() {
+    console.log(this.file.name)
+  }
 }
