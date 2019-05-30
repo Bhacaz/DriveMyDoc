@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
   public onSignIn(googleUser) {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.getAuthInstance();
-      this.auth2.signOut().then( () => {
-        this.authService.initSession(googleUser);
-      });
+      this.authService.initSession(googleUser);
+      // this.auth2.signOut().then( () => {
+      // });
     });
   }
 }
