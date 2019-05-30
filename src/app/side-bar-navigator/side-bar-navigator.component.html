@@ -1,3 +1,10 @@
-<p>
-  side-navigator works!
-</p>
+
+<mat-list *ngFor="let folder of folders">
+  <app-first-level-folder [folder]="folder"></app-first-level-folder>
+</mat-list>
+
+<mat-list>
+  <mat-list-item *ngFor="let file of files ">
+    <app-file-item [file]="file"></app-file-item>
+  </mat-list-item>
+</mat-list>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DriveService} from '../drive/drive.service';
 import {DriveFolder} from '../drive/drive-folder';
 import {DriveFile} from '../drive/drive-file';
+import {DriveDocument} from '../drive/drive-document';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,7 @@ import {DriveFile} from '../drive/drive-file';
 })
 export class MainComponent implements OnInit {
 
-  user: any;
+  documents: DriveDocument[] = [];
 
   constructor(
     private driveService: DriveService
@@ -20,22 +21,6 @@ export class MainComponent implements OnInit {
     this.getFilesRoot();
   }
 
-  // getUserFromlocalStorage() {
-  //   this.user = JSON.parse(localStorage.getItem('user'));
-  // }
-  //
-  // clearUserlocalStorage() {
-  //   localStorage.removeItem('user');
-  //   this.user = undefined;
-  //   this.googleInit();
-  //   gapi.load('auth2', () => {
-  //     this.auth2 = gapi.auth2.getAuthInstance();
-  //     this.auth2.signOut().then( () => {
-  //       console.log('User signed out.');
-  //     });
-  //   });
-  // }
-
   getFilesRoot() {
     const rootFolderId = '1ZrcMsg9vniVT2FpvjgZseGUG4SartwLz';
     // this.driveService.getFiles(rootFolderId)
@@ -43,17 +28,18 @@ export class MainComponent implements OnInit {
     //   console.log(data);
     // });
     const mockFiles = this.mockFiles();
-    const folders: DriveFolder[] = [];
-    const files: DriveFile[] = [];
+
     mockFiles.files.forEach((document) => {
-      if (document.mimeType === 'application/vnd.google-apps.folder') {
-        folders.push(new DriveFolder(
-          document.id, document.name, document.mimeType, document.parents, document.webViewLink, document.iconLink
-        ));
-      } else {
-        files.push(new DriveFile(
-          document.id, document.name, document.mimeType, document.parents, document.webViewLink, document.iconLink
-        ));
+      if (document.name[0] !== '.') {
+        if (document.mimeType === 'application/vnd.google-apps.folder') {
+          this.documents.push(new DriveFolder(
+            document.id, document.name, document.mimeType, document.parents, document.webViewLink, document.iconLink
+          ));
+        } else {
+          this.documents.push(new DriveFile(
+            document.id, document.name, document.mimeType, document.parents, document.webViewLink, document.iconLink
+          ));
+        }
       }
     });
   }
@@ -64,6 +50,16 @@ export class MainComponent implements OnInit {
         {
           'id': '12JM1SiEmDzNRCFM-L-zo82gkVzk-SQ4vxy3RcWMao4s',
           'name': 'DriveMyDoc Roadmap',
+          'mimeType': 'application/vnd.google-apps.spreadsheet',
+          'parents': [
+            '1ZrcMsg9vniVT2FpvjgZseGUG4SartwLz'
+          ],
+          'webViewLink': 'https://docs.google.com/spreadsheets/d/12JM1SiEmDzNRCFM-L-zo82gkVzk-SQ4vxy3RcWMao4s/edit?usp=drivesdk',
+          'iconLink': 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.spreadsheet'
+        },
+        {
+          'id': '12JM1SiEmDzNRCFM-L-zo82gkVzk-SQ4vxy3RcWMao4s',
+          'name': 'Hello world from the world',
           'mimeType': 'application/vnd.google-apps.spreadsheet',
           'parents': [
             '1ZrcMsg9vniVT2FpvjgZseGUG4SartwLz'
