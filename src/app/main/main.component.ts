@@ -11,7 +11,7 @@ import {DriveDocument} from '../drive/drive-document';
 })
 export class MainComponent implements OnInit {
 
-  documents: DriveDocument[] = [];
+  documents: any = { files: [], folders: [] };
 
   constructor(
     private driveService: DriveService
@@ -32,13 +32,9 @@ export class MainComponent implements OnInit {
     mockFiles.files.forEach((document) => {
       if (document.name[0] !== '.') {
         if (document.mimeType === 'application/vnd.google-apps.folder') {
-          this.documents.push(new DriveFolder(
-            document.id, document.name, document.mimeType, document.parents, document.webViewLink, document.iconLink
-          ));
+          this.documents.folders.push(document as DriveFolder);
         } else {
-          this.documents.push(new DriveFile(
-            document.id, document.name, document.mimeType, document.parents, document.webViewLink, document.iconLink
-          ));
+          this.documents.files.push(document as DriveFile);
         }
       }
     });

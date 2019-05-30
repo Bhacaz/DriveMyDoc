@@ -10,20 +10,12 @@ import {DriveFile} from '../drive/drive-file';
 })
 export class SideBarNavigatorComponent implements OnInit {
 
-  @Input() documents: DriveDocument[];
-  folders: DriveFolder[] = [];
-  files: DriveFile[] = [];
+  @Input() folders: DriveFolder[];
+  @Input() files: DriveFile[];
 
   constructor() { }
 
   ngOnInit() {
-    this.documents.forEach((document) => {
-      if (document.constructor.name === 'DriveFolder') {
-        this.folders.push(document);
-      } else {
-        this.files.push(document);
-      }
-    });
     console.log(this.folders);
     console.log(this.files);
   }
