@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatListModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatToolbarModule, MatTreeModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -36,7 +36,10 @@ import { FolderItemComponent } from './side-bar-navigator/folder-item/folder-ite
     HttpClientModule,
     MatToolbarModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatTreeModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     DriveService,

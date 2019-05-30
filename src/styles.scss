@@ -2,7 +2,10 @@
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-list-base .mat-list-item {
@@ -13,4 +16,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-list {
   margin-bottom: 24px;
+}
+.mat-tree {
+  background-color: #fafafa;
 }

@@ -2,19 +2,20 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  height: 100%;
+  height: calc(100% - 64px);
 }
 
 #side-bar-navigator-container {
   width: 25em;
   background-color: #fafafa;
   height: 100%;
-  padding-top: 2em;
   padding-left: 1.5em;
+  margin-bottom: 4em;
+  overflow: scroll;
 }
 
 #file-viewer-container {
-  flex: 3 0 0;
+  flex: 1 0 0;
   height: 100%;
   background-color: lightblue;
 }

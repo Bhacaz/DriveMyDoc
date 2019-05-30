@@ -18,10 +18,10 @@ export class FirstLevelFolderComponent implements OnInit {
   }
 
   fetchFiles() {
-    this.driveService.getFiles(this.folder.id)
-      .subscribe((data) => {
-      console.log(data);
-    });
+    // this.driveService.getFiles(this.folder.id)
+    //   .subscribe((data) => {
+    //   console.log(data);
+    // });
   }
 
 }

@@ -1,0 +1,16 @@
+
+.expend-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.expend-row-button {
+  margin-right: 2em;
+}
+
+.root-mat-tree {
+  padding-left: 16px;
+}

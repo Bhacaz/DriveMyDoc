@@ -1,10 +1,12 @@
 
-<mat-list *ngFor="let folder of folders">
+<mat-list *ngFor="let folder of folders" class="side-bar-first-element">
   <app-first-level-folder [folder]="folder"></app-first-level-folder>
 </mat-list>
 
 <mat-list>
-  <span *ngFor="let file of files ">
-    <app-file-item [file]="file"></app-file-item>
-  </span>
+<span *ngFor="let file of files ">
+  <app-file-item [file]="file"></app-file-item>
+</span>
 </mat-list>
+
+<app-folder-item></app-folder-item>
