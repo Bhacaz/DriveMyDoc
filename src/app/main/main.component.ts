@@ -54,16 +54,6 @@ export class MainComponent implements OnInit {
           'iconLink': 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.spreadsheet'
         },
         {
-          'id': '12JM1SiEmDzNRCFM-L',
-          'name': 'Hello world from the world',
-          'mimeType': 'application/vnd.google-apps.spreadsheet',
-          'parents': [
-            '1ZrcMsg9vniVT2FpvjgZseGUG4SartwLz'
-          ],
-          'webViewLink': 'https://docs.google.com/spreadsheets/d/12JM1SiEmDzNRCFM-L-zo82gkVzk-SQ4vxy3RcWMao4s/edit?usp=drivesdk',
-          'iconLink': 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.spreadsheet'
-        },
-        {
           'id': '1daxNavvzRYbbaEAfqiTT1NW-kdl0Nv6A',
           'name': 'Document Google Docs',
           'mimeType': 'application/vnd.google-apps.folder',

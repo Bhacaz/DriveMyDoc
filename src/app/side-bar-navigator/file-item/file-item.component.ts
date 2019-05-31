@@ -13,6 +13,7 @@ export class FileItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.file);
 
   }
 

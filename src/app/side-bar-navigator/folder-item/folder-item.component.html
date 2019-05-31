@@ -1,11 +1,12 @@
 
-<mat-tree class="root-mat-tree" [dataSource]="dataSource" [treeControl]="treeControl">
+<mat-tree class="root-mat-tree" [dataSource]="dataSource" [treeControl]="treeControl" [attr.id]="'mat-tree' + folder.id">
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
     <!-- use a disabled button to provide padding for tree leaf -->
     <a class="file-redirect" [routerLink]="['/' + node.name]">
       {{node.name}}
-    </a>    <button mat-icon-button disabled></button>
+    </a>
+    <button mat-icon-button disabled></button>
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
   <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>

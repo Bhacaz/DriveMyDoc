@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-
 
 interface FoodNode {
   name: string;
@@ -60,6 +59,7 @@ interface ExampleFlatNode {
   expandable: boolean;
   name: string;
   level: number;
+  source: any;
 }
 
 @Component({
@@ -67,25 +67,52 @@ interface ExampleFlatNode {
   templateUrl: './folder-item.component.html',
   styleUrls: ['./folder-item.component.scss']
 })
+
 export class FolderItemComponent implements OnInit {
-  private _transformer = (node: FoodNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-    };
-  }
+
+  @Input() documents: any;
+  // treeControl: FlatTreeControl<ExampleFlatNode>;
+  // treeFlattener: MatTreeFlattener;
+  // dataSource: MatTreeFlatDataSource;
 
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level, node => node.expandable);
 
   treeFlattener = new MatTreeFlattener(
-    this._transformer, node => node.level, node => node.expandable, node => node.children);
+    this.transformer, node => node.level, node => node.expandable, node => node.files);
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
+  ngOnInit() {
+    console.log(this.documents);
+    // this.initTreeControl();
+    this.dataSource.data = this.documents;
+    // @ViewChild('')
+  }
+
+  initTreeControl() {
+    // this.treeControl = new FlatTreeControl<ExampleFlatNode>(
+    //   node => node.level, node => node.expandable);
+    //
+    // this.treeFlattener = new MatTreeFlattener(
+    //   this.transformer, node => node.level, node => node.expandable, node => node.files);
+    //
+    // this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+    // this.dataSource.data = this.documents;
+  }
+
+  transformer(node: any, level: number) {
+    console.log(node);
+    return {
+      expandable: !!node.files && node.files.length > 0,
+      name: node.name,
+      level: level,
+      source: node
+    };
+  }
+
   constructor() {
-    this.dataSource.data = TREE_DATA;
+    this.dataSource.data =
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
