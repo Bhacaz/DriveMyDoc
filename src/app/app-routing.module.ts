@@ -6,6 +6,7 @@ import {MainComponent} from './main/main.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: ':fileId', component: MainComponent },
   { path: '**', component: MainComponent}
 
 ];

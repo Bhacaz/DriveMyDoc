@@ -1,3 +1,5 @@
-<p>
-  file-viewer works!
-</p>
+<div class="embedded">
+  <iframe *ngIf="fileId" [src]="urlViewer()" style="height: 100%; width: 100%">
+
+  </iframe>
+</div>
