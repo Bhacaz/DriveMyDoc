@@ -1,10 +1,10 @@
+@import "../../_variables.scss";
 
 .mat-list-item {
   color: #9DAAB6;
   font-size: 12px;
   font-weight: bold;
 }
-
 
 .expend-row-button {
   margin-right: 2em;
@@ -36,5 +36,16 @@
   width: inherit;
   padding-top: 1.2em;
   padding-bottom: 1.2em;
-  color: #5C6975;
+  color: inherit
+}
+
+.selected-node {
+  background-color: white;
+  border: 1px solid #e6ecf1;
+  border-right: 0;
+  color: $primary;
+}
+
+.selected-node:hover {
+  background-color: white;
 }

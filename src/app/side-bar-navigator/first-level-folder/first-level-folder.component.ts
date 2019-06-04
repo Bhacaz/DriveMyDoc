@@ -5,6 +5,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {DriveDocument} from '../../drive/drive-document';
 import {BehaviorSubject} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
 /** Flat node with expandable and level information */
 interface ExampleFlatNode {
@@ -23,6 +24,7 @@ export class FirstLevelFolderComponent implements OnInit {
 
   @Input() folder: DriveFolder;
   documents: DriveDocument[] = [];
+  currentSelectedFileId: string;
 
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level, node => node.expandable);
@@ -33,14 +35,17 @@ export class FirstLevelFolderComponent implements OnInit {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   dataChange = new BehaviorSubject<DriveDocument[]>([]);
 
-
-  constructor(private driveService: DriveService) { }
+  constructor(private driveService: DriveService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.dataChange.subscribe(data => {
       this.dataSource.data = data;
     });
     this.fetchFiles(this.folder.id, this.documents);
+    this.route.params.subscribe(params => {
+      this.currentSelectedFileId = params.fileId;
+    });
   }
 
   fetchFiles(documentId: string, documents: DriveDocument[]) {

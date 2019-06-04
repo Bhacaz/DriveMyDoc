@@ -10,6 +10,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class FileViewerComponent implements OnInit {
 
   fileId: string;
+  safeUrl: any;
 
   constructor(private route: ActivatedRoute,
               public sanitizer: DomSanitizer) {}
@@ -17,14 +18,8 @@ export class FileViewerComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.fileId = params.fileId;
-
-      // In a real app: dispatch action to load the details here.
+      const url = 'https://docs.google.com/viewer?srcid=' + this.fileId + '&pid=explorer&efh=false&a=v&chrome=false&embedded=true'
+      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);      // In a real app: dispatch action to load the details here.
     });
   }
-
-  urlViewer() {
-    const url = 'https://docs.google.com/viewer?srcid=' + this.fileId + '&pid=explorer&efh=false&a=v&chrome=false&embedded=true'
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-
 }

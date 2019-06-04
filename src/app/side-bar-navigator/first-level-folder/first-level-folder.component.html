@@ -1,12 +1,9 @@
 
 <mat-list-item> {{folder.name | uppercase}} </mat-list-item>
 
-<!--<app-folder-item [documents]="documents"></app-folder-item>-->
-
-
 <mat-tree class="root-mat-tree" [(dataSource)]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [class.selected-node]="currentSelectedFileId === node.source.id">
     <!-- use a disabled button to provide padding for tree leaf -->
     <a class="file-redirect" [routerLink]="['/' + node.source.id]">
       {{node.name}}
