@@ -1,6 +1,40 @@
 
 .mat-list-item {
-  color: #616161;
+  color: #9DAAB6;
   font-size: 12px;
   font-weight: bold;
+}
+
+
+.expend-row-button {
+  margin-right: 2em;
+}
+
+.mat-tree {
+  background-color: #F5F7F9;
+}
+
+.mat-tree-node {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: #5C6975;
+  padding-left: 1.2em;
+  min-height: 2em;
+}
+
+.mat-tree-node:hover {
+  background-color: #e6ecf1;
+}
+
+.file-redirect {
+  display: -webkit-box;
+  text-decoration: none;
+  height: inherit;
+  width: inherit;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  color: #5C6975;
 }

@@ -7,5 +7,6 @@ export interface DriveDocument {
   parents: string[];
   webViewLink: string;
   iconLink: string;
+  files: DriveDocument[];
 
 }

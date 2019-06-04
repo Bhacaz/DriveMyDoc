@@ -71,34 +71,36 @@ interface ExampleFlatNode {
 export class FolderItemComponent implements OnInit {
 
   @Input() documents: any;
-  // treeControl: FlatTreeControl<ExampleFlatNode>;
-  // treeFlattener: MatTreeFlattener;
-  // dataSource: MatTreeFlatDataSource;
+  treeControl: FlatTreeControl<ExampleFlatNode>;
+  treeFlattener: any;
+  dataSource: any;
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level, node => node.expandable);
-
-  treeFlattener = new MatTreeFlattener(
-    this.transformer, node => node.level, node => node.expandable, node => node.files);
-
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  // treeControl = new FlatTreeControl<ExampleFlatNode>(
+  //   node => node.level, node => node.expandable);
+  //
+  // treeFlattener = new MatTreeFlattener(
+  //   this.transformer, node => node.level, node => node.expandable, node => node.files);
+  //
+  // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   ngOnInit() {
     console.log(this.documents);
     // this.initTreeControl();
-    this.dataSource.data = this.documents;
+
+    // this.initTreeControl();
+    // this.dataSource.data = this.documents;
     // @ViewChild('')
   }
 
   initTreeControl() {
-    // this.treeControl = new FlatTreeControl<ExampleFlatNode>(
-    //   node => node.level, node => node.expandable);
-    //
-    // this.treeFlattener = new MatTreeFlattener(
-    //   this.transformer, node => node.level, node => node.expandable, node => node.files);
-    //
-    // this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-    // this.dataSource.data = this.documents;
+    this.treeControl = new FlatTreeControl<ExampleFlatNode>(
+      node => node.level, node => node.expandable);
+
+    this.treeFlattener = new MatTreeFlattener(
+      this.transformer, node => node.level, node => node.expandable, node => node.files);
+
+    this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+    this.dataSource.data = this.documents;
   }
 
   transformer(node: any, level: number) {
@@ -112,7 +114,7 @@ export class FolderItemComponent implements OnInit {
   }
 
   constructor() {
-    this.dataSource.data =
+
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
