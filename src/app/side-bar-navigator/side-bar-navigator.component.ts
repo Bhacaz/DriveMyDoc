@@ -16,7 +16,6 @@ export class SideBarNavigatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.folders);
-    console.log(this.files);
+
   }
 }

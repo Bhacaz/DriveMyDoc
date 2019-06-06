@@ -3,9 +3,6 @@
   <app-first-level-folder [folder]="folder"></app-first-level-folder>
 </mat-list>
 
-<mat-list>
-<span *ngFor="let file of files">
+<mat-list *ngFor="let file of files">
   <app-file-item [file]="file"></app-file-item>
-</span>
 </mat-list>
-

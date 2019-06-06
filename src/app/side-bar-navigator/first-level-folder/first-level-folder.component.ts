@@ -48,8 +48,8 @@ export class FirstLevelFolderComponent implements OnInit {
     });
   }
 
-  fetchFiles(documentId: string, documents: DriveDocument[]) {
-    this.driveService.getFiles(documentId)
+  fetchFiles(folderId: string, documents: DriveDocument[]) {
+    this.driveService.getFiles(folderId)
       .subscribe((data) => {
         data.files.forEach((document) => {
           if (document.name[0] !== '.') {

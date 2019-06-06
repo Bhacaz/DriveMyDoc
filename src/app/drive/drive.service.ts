@@ -6,7 +6,7 @@ import {Injectable} from '@angular/core';
 export class DriveService {
 
   DRIVE_API_URL = 'https://content.googleapis.com/drive/v3/';
-  FIELDS = 'nextPageToken, files(id, name, parents, webViewLink, iconLink, mimeType)';
+  FIELDS = 'files(id, name, parents, webViewLink, iconLink, mimeType)';
 
   headers: HttpHeaders;
   accessToken: string;
@@ -27,6 +27,24 @@ export class DriveService {
     };
 
     return this.http.get(this.DRIVE_API_URL + 'files', { headers: this.headers, params });
+  }
+
+  getFile(fileId: string): any {
+    const params = {
+      fields: '*',
+      supports_team_drives: 'true',
+      include_team_drive_items: 'true'
+    };
+
+    return this.http.get(this.DRIVE_API_URL + 'files/' + fileId, { headers: this.headers, params });
+  }
+
+  fileContentUrl(fileId: string) {
+    return this.DRIVE_API_URL + 'files/' + fileId + '?alt=media';
+  }
+
+  getFileContent(fileId: string) {
+    return this.http.get(this.fileContentUrl(fileId), { headers: this.headers, responseType: 'text' });
   }
 
   getUserFromlocalStorage() {

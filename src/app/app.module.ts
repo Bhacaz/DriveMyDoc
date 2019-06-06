@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatToolbarModule, MatTreeModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {DriveService} from './drive/drive.service';
 import {AuthService} from './auth.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -15,6 +15,8 @@ import { FirstLevelFolderComponent } from './side-bar-navigator/first-level-fold
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
 import { FileItemComponent } from './side-bar-navigator/file-item/file-item.component';
 import { FolderItemComponent } from './side-bar-navigator/folder-item/folder-item.component';
+import {MarkdownModule, MarkedOptions} from 'ngx-markdown';
+import {AuthorizationInterceptor} from './authorization-interceptor';
 
 
 @NgModule({
@@ -39,11 +41,31 @@ import { FolderItemComponent } from './side-bar-navigator/folder-item/folder-ite
     MatListModule,
     MatTreeModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          tables: true,
+          breaks: true,
+          pedantic: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false,
+        },
+      },
+    })
   ],
   providers: [
     DriveService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

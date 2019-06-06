@@ -1,5 +1,5 @@
-<div class="embedded">
-  <iframe *ngIf="fileId" [src]="safeUrl" style="height: 100%; width: 100%">
+  <!--<iframe *ngIf="fileId" [src]="safeUrl" style="height: 100%; width: 100%" frameBorder="0"></iframe>-->
 
-  </iframe>
-</div>
+  <div markdown *ngIf="webContentLink" [data]="markdown">
+
+  </div>

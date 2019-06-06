@@ -17,5 +17,12 @@
 #file-viewer-container {
   flex: 1 0 0;
   height: 100%;
-  background-color: lightblue;
+  //background-color: lightblue;
+}
+
+.embedded {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
