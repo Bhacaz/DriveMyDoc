@@ -10,6 +10,7 @@ before_script:
   - npm install -g @angular/cli
 script:
 - ng build --prod --base-href https://github.bhacaz.com/
+- mv CNAME dist/DriveMyDoc/
 deploy:
   provider: pages
   skip_cleanup: true
