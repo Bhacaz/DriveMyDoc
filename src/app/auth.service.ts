@@ -18,10 +18,6 @@ export class AuthService {
       imageUrl: profile.getImageUrl()
     };
 
-    console.log(googleUser);
-    console.log(googleUser.getAuthResponse());
-    console.log(googleUser.getAuthResponse().access_token);
-
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', googleUser.getAuthResponse().access_token);
     this.ngZone.run(() => this.router.navigate(['/']));

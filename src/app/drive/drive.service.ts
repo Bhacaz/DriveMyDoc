@@ -19,11 +19,13 @@ export class DriveService {
   getFiles(parentId: string): any {
     const params = {
       q: '\'' + parentId + '\'' + ' in parents and trashed = false',
-      order_by: 'folder',
+      orderBy: 'folder',
       fields: this.FIELDS,
-      page_size: '1000',
-      supports_team_drives: 'true',
-      include_team_drive_items: 'true'
+      pageSize: '1000',
+      includeTeamDriveItems: 'true',
+      includeItemsFromAllDrives: 'true',
+      supportsAllDrives: 'true',
+      supportsTeamDrives: 'true'
     };
 
     return this.http.get(this.DRIVE_API_URL + 'files', { headers: this.headers, params });
@@ -32,8 +34,10 @@ export class DriveService {
   getFile(fileId: string): any {
     const params = {
       fields: '*',
-      supports_team_drives: 'true',
-      include_team_drive_items: 'true'
+      includeTeamDriveItems: 'true',
+      includeItemsFromAllDrives: 'true',
+      supportsAllDrives: 'true',
+      supportsTeamDrives: 'true'
     };
 
     return this.http.get(this.DRIVE_API_URL + 'files/' + fileId, { headers: this.headers, params });

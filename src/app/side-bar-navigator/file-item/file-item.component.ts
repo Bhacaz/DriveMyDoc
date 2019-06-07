@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DriveFile} from '../../drive/drive-file';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-file-item',
@@ -9,12 +10,14 @@ import {DriveFile} from '../../drive/drive-file';
 export class FileItemComponent implements OnInit {
 
   @Input() file: DriveFile;
+  currentSelectedFileId: string;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.file);
-
+    this.route.params.subscribe(params => {
+      this.currentSelectedFileId = params.fileId;
+    });
   }
 
 }

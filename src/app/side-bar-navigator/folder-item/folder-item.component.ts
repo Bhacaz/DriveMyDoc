@@ -84,7 +84,7 @@ export class FolderItemComponent implements OnInit {
   // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   ngOnInit() {
-    console.log(this.documents);
+    // console.log(this.documents);
     // this.initTreeControl();
 
     // this.initTreeControl();
@@ -104,7 +104,6 @@ export class FolderItemComponent implements OnInit {
   }
 
   transformer(node: any, level: number) {
-    console.log(node);
     return {
       expandable: !!node.files && node.files.length > 0,
       name: node.name,

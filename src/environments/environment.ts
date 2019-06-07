@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// const rootFolderId = '1ZrcMsg9vniVT2FpvjgZseGUG4SartwLz'; // JF personal folder
+// const rootFolderId = '0AAkU6Vg8NlJoUk9PVA'; // Yves TeamDrive
+// const rootFolderId = '1wcRsRBlHWsKesKmFdq-ouZzezRvaP5he'; // JF PetalMD folder (tmp default folder)
+
 export const environment = {
-  production: false
+  production: false,
+  rootFolderId: '1wcRsRBlHWsKesKmFdq-ouZzezRvaP5he'
 };
 
 /*
