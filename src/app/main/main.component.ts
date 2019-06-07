@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {DriveService} from '../drive/drive.service';
 import {DriveFolder} from '../drive/drive-folder';
 import {DriveFile} from '../drive/drive-file';
 import {DriveDocument} from '../drive/drive-document';
 import {environment} from '../../environments/environment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -15,10 +16,13 @@ export class MainComponent implements OnInit {
   documents: any = { files: [], folders: [] };
 
   constructor(
-    private driveService: DriveService
+    private driveService: DriveService,
+    private ngZone: NgZone,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.checkIfAuthentified();
     this.getFilesRoot();
   }
 
@@ -35,5 +39,11 @@ export class MainComponent implements OnInit {
         }
       });
     });
+  }
+
+  checkIfAuthentified() {
+    if (!this.driveService.getUserFromlocalStorage()) {
+      this.ngZone.run(() => this.router.navigate(['/login']));
+    }
   }
 }
