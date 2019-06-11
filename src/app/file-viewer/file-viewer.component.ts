@@ -22,7 +22,7 @@ export class FileViewerComponent implements OnInit {
               private driveService: DriveService) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       this.fileId = params.fileId;
       const url = 'https://docs.google.com/viewer?srcid=' + this.fileId + '&pid=explorer&efh=false&a=v&chrome=false&embedded=true';
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
