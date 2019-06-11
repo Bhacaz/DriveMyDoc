@@ -13,7 +13,8 @@ import {Router} from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  documents: any = { files: [], folders: [] };
+  files: DriveFile[] = [];
+  folders: DriveFolder[] = [];
 
   constructor(
     private driveService: DriveService,
@@ -32,9 +33,9 @@ export class MainComponent implements OnInit {
       data.files.forEach((document) => {
         if (document.name[0] !== '.') {
           if (document.mimeType === 'application/vnd.google-apps.folder') {
-            this.documents.folders.push(document as DriveFolder);
+            this.folders.push(document as DriveFolder);
           } else {
-            this.documents.files.push(document as DriveFile);
+            this.files.push(document as DriveFile);
           }
         }
       });
@@ -43,7 +44,7 @@ export class MainComponent implements OnInit {
 
   checkIfAuthentified() {
     if (!this.driveService.getUserFromlocalStorage()) {
-      this.ngZone.run(() => this.router.navigate(['/login']));
+      this.router.navigate(['/login']);
     }
   }
 }

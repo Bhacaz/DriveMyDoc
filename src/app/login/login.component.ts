@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
+import {environment} from '../../environments/environment';
 
 declare const gapi: any;
 
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   googleInit() {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
-        client_id: this.clientId,
+        client_id: environment.clientId,
         scope: this.scope
       });
       window['onSignIn'] = (user) => this.ngZone.run(() => this.onSignIn(user));
@@ -48,8 +49,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.getAuthInstance();
       this.authService.initSession(googleUser);
-      // this.auth2.signOut().then( () => {
-      // });
     });
   }
 }

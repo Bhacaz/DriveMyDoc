@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DriveFile} from '../../drive/drive-file';
 import {ActivatedRoute} from '@angular/router';
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-file-item',
   templateUrl: './file-item.component.html',

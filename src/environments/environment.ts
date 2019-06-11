@@ -8,7 +8,8 @@
 
 export const environment = {
   production: false,
-  rootFolderId: '1wcRsRBlHWsKesKmFdq-ouZzezRvaP5he'
+  rootFolderId: '1ZrcMsg9vniVT2FpvjgZseGUG4SartwLz',
+  clientId: '798021972045-vo31kgilujafp0q9gibdmfe7jr5rau25.apps.googleusercontent.com'
 };
 
 /*
