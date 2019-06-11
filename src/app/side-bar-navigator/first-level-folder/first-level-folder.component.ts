@@ -43,7 +43,7 @@ export class FirstLevelFolderComponent implements OnInit {
       this.dataSource.data = data;
     });
     this.fetchFiles(this.folder.id, this.documents);
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       this.currentSelectedFileId = params.fileId;
     });
   }

@@ -15,7 +15,7 @@ export class FileItemComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       this.currentSelectedFileId = params.fileId;
     });
   }
