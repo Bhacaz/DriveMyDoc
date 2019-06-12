@@ -8,7 +8,7 @@ import {BehaviorSubject} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
 /** Flat node with expandable and level information */
-interface ExampleFlatNode {
+interface FlatNode {
   expandable: boolean;
   name: string;
   level: number;
@@ -26,7 +26,7 @@ export class FirstLevelFolderComponent implements OnInit {
   documents: DriveDocument[] = [];
   currentSelectedFileId: string;
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  treeControl = new FlatTreeControl<FlatNode>(
     node => node.level, node => node.expandable);
 
   treeFlattener = new MatTreeFlattener(
@@ -73,7 +73,7 @@ export class FirstLevelFolderComponent implements OnInit {
     };
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: FlatNode) => node.expandable;
 
 }
 
