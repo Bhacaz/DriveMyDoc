@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: environment.clientId,
-        scope: this.scope
+        scope: this.scope,
+        cookiepolicy: 'single_host_origin'
       });
       window['onSignIn'] = (user) => this.ngZone.run(() => this.onSignIn(user));
     });

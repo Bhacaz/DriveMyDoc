@@ -20,12 +20,28 @@ export class AuthService {
 
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', googleUser.getAuthResponse().access_token);
+    localStorage.setItem('expires_at', googleUser.getAuthResponse().expires_at);
     this.ngZone.run(() => this.router.navigate(['/']));
   }
 
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('expires_at');
     window.open('/login', '_self');
+  }
+
+  getUserToken() {
+    return localStorage.getItem('token');
+  }
+
+  getExpiresAt(): number {
+    return +localStorage.getItem('expires_at');
+  }
+
+  validateExpiredToken() {
+    if ( Date.now() > this.getExpiresAt()) {
+      this.logout();
+    }
   }
 }

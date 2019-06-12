@@ -5,6 +5,7 @@ import {DriveFile} from '../drive/drive-file';
 import {DriveDocument} from '../drive/drive-document';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-main',
@@ -18,8 +19,7 @@ export class MainComponent implements OnInit {
 
   constructor(
     private driveService: DriveService,
-    private ngZone: NgZone,
-    private router: Router
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -43,8 +43,6 @@ export class MainComponent implements OnInit {
   }
 
   checkIfAuthentified() {
-    if (!this.driveService.getUserFromlocalStorage()) {
-      this.router.navigate(['/login']);
-    }
+    this.authService.validateExpiredToken();
   }
 }

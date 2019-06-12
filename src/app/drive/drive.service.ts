@@ -1,5 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {AuthService} from '../auth.service';
 
 @Injectable()
 
@@ -11,8 +12,9 @@ export class DriveService {
   headers: HttpHeaders;
   accessToken: string;
 
-  constructor(private http: HttpClient) {
-    this.accessToken = this.getUserFromlocalStorage();
+  constructor(private http: HttpClient,
+              private authService: AuthService) {
+    this.accessToken = this.authService.getUserToken();
     this.headers = new HttpHeaders({ Authorization: 'Bearer ' + this.accessToken });
   }
 
@@ -49,9 +51,5 @@ export class DriveService {
 
   getFileContent(fileId: string) {
     return this.http.get(this.fileContentUrl(fileId), { headers: this.headers, responseType: 'text' });
-  }
-
-  getUserFromlocalStorage() {
-    return localStorage.getItem('token');
   }
 }
