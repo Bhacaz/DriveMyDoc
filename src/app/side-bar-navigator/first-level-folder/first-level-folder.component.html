@@ -17,7 +17,8 @@
     </a>
     <div class="expend-row-button">
       <button mat-button mat-icon-button matTreeNodeToggle
-              [attr.aria-label]="'toggle ' + node.name">
+              [attr.aria-label]="'toggle ' + node.name"
+              (click)="fetchFiles(node.source.id, node.source.files, node)">
         <mat-icon class="mat-icon-rtl-mirror">
           {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
         </mat-icon>

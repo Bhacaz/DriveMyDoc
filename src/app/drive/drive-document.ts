@@ -1,6 +1,6 @@
+import {BehaviorSubject} from 'rxjs';
 
 export interface DriveDocument {
-
   id: string;
   name: string;
   mimeType: string;
@@ -9,5 +9,6 @@ export interface DriveDocument {
   iconLink: string;
   files: DriveDocument[];
   webContentLink: string;
+  filesChange: BehaviorSubject<DriveDocument[]>;
 
 }
