@@ -8,7 +8,7 @@ import {BehaviorSubject} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
 /** Flat node with expandable and level information */
-interface ExampleFlatNode {
+interface FlatNode {
   expandable: boolean;
   name: string;
   level: number;
@@ -26,7 +26,7 @@ export class FirstLevelFolderComponent implements OnInit {
   documents: DriveDocument[] = [];
   currentSelectedFileId: string;
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  treeControl = new FlatTreeControl<FlatNode>(
     node => node.level, node => node.expandable);
 
   treeFlattener = new MatTreeFlattener(
@@ -48,16 +48,19 @@ export class FirstLevelFolderComponent implements OnInit {
     });
   }
 
-  fetchFiles(folderId: string, documents: DriveDocument[]) {
+  fetchFiles(folderId: string, documents: DriveDocument[], node: FlatNode = null) {
+    if (documents.length > 0) { return; }
+
     this.driveService.getFiles(folderId)
       .subscribe((data) => {
         data.files.forEach((document) => {
           if (document.name[0] !== '.') {
             if (document.mimeType === 'application/vnd.google-apps.folder') {
               document.files = [];
-              this.fetchFiles(document.id, document.files);
+              // this.fetchFiles(document.id, document.files);
             }
             documents.push(document);
+            if (node) { node.expandable = true; }
             this.dataChange.next(this.documents);
           }
         });
@@ -66,14 +69,14 @@ export class FirstLevelFolderComponent implements OnInit {
 
   _transformer(node: DriveDocument, level: number) {
     return {
-      expandable: !!node.files && node.files.length > 0,
+      expandable: !!node.files && node.files.length >= 0,
       name: node.name,
       level: level,
       source: node
     };
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: FlatNode) => node.expandable;
 
 }
 

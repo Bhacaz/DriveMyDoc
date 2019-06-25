@@ -55,7 +55,7 @@ const TREE_DATA: FoodNode[] = [
 ];
 
 /** Flat node with expandable and level information */
-interface ExampleFlatNode {
+interface FlatNode {
   expandable: boolean;
   name: string;
   level: number;
@@ -71,11 +71,11 @@ interface ExampleFlatNode {
 export class FolderItemComponent implements OnInit {
 
   @Input() documents: any;
-  treeControl: FlatTreeControl<ExampleFlatNode>;
+  treeControl: FlatTreeControl<FlatNode>;
   treeFlattener: any;
   dataSource: any;
 
-  // treeControl = new FlatTreeControl<ExampleFlatNode>(
+  // treeControl = new FlatTreeControl<FlatNode>(
   //   node => node.level, node => node.expandable);
   //
   // treeFlattener = new MatTreeFlattener(
@@ -93,7 +93,7 @@ export class FolderItemComponent implements OnInit {
   }
 
   initTreeControl() {
-    this.treeControl = new FlatTreeControl<ExampleFlatNode>(
+    this.treeControl = new FlatTreeControl<FlatNode>(
       node => node.level, node => node.expandable);
 
     this.treeFlattener = new MatTreeFlattener(
@@ -116,6 +116,6 @@ export class FolderItemComponent implements OnInit {
 
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: FlatNode) => node.expandable;
 
 }
