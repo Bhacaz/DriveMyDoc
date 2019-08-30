@@ -26,10 +26,10 @@ export class FileViewerComponent implements OnInit {
       this.fileId = params.fileId;
       const url = 'https://docs.google.com/viewer?srcid=' + this.fileId + '&pid=explorer&efh=false&a=v&chrome=false&embedded=true';
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      // this.webContentLink = this.driveService.fileContentUrl(this.fileId);
+      this.webContentLink = this.driveService.fileContentUrl(this.fileId);
       // console.log(this.webContentLink);
       // if (this.fileId) { this.fetchFile(); }
-      // if (this.fileId) { this.fetchFileContent(); }
+      if (this.fileId) { this.fetchFileContent(); }
     });
   }
 

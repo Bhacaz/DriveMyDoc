@@ -15,7 +15,7 @@ import { FirstLevelFolderComponent } from './side-bar-navigator/first-level-fold
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
 import { FileItemComponent } from './side-bar-navigator/file-item/file-item.component';
 import { FolderItemComponent } from './side-bar-navigator/folder-item/folder-item.component';
-import {MarkdownModule, MarkedOptions} from 'ngx-markdown';
+import {MarkdownModule, MarkedOptions, MarkedRenderer} from 'ngx-markdown';
 import {AuthorizationInterceptor} from './authorization-interceptor';
 
 
