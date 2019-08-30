@@ -82,3 +82,4 @@ export class FirstLevelFolderComponent implements OnInit {
 
 // To create a search filter
 // https://stackblitz.com/edit/angular-yb37gh?file=app%2Ftree-checklist-example.html
+// https://stackblitz.com/angular/bqnqjjvgjym?file=app%2Ftree-dynamic-example.css
