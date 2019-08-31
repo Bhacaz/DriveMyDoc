@@ -49,3 +49,8 @@
 .selected-node:hover {
   background-color: white;
 }
+
+
+.mat-spinner::ng-deep circle {
+  stroke: $primary!important;
+}

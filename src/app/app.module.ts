@@ -3,7 +3,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatToolbarModule, MatTreeModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule,
+  MatTreeModule
+} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
@@ -42,6 +50,7 @@ import {AuthorizationInterceptor} from './authorization-interceptor';
     MatTreeModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {
