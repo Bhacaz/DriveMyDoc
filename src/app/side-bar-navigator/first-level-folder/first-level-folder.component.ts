@@ -110,7 +110,6 @@ export class DynamicDataSource {
       return { isExpandable: false, name: document.name, level, source: document } as FlatNode;
     }
   }
-
 }
 
 @Component({
@@ -143,6 +142,14 @@ export class FirstLevelFolderComponent implements OnInit {
   }
 
   hasChild = (_: number, nodeData: FlatNode) => nodeData.isExpandable;
+
+  removeExtension(fileName): string {
+    const splitted = fileName.split('.');
+    if (splitted.length > 1) {
+      return splitted.slice(0, -1).join('.');
+    }
+    return fileName;
+  }
 }
 
 // To create a search filter

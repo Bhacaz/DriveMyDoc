@@ -13,9 +13,8 @@ export class FileViewerComponent implements OnInit {
 
   fileId: string;
   safeUrl: any;
-  file: DriveDocument;
-  webContentLink: string;
-  markdown = '';
+  file: any;
+  markdown = null;
 
   constructor(private route: ActivatedRoute,
               public sanitizer: DomSanitizer,
@@ -26,26 +25,30 @@ export class FileViewerComponent implements OnInit {
       this.fileId = params.fileId;
       const url = 'https://docs.google.com/viewer?srcid=' + this.fileId + '&pid=explorer&efh=false&a=v&chrome=false&embedded=true';
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      this.webContentLink = this.driveService.fileContentUrl(this.fileId);
-      // console.log(this.webContentLink);
-      // if (this.fileId) { this.fetchFile(); }
-      if (this.fileId) { this.fetchFileContent(); }
+      this.fetchFile();
     });
   }
 
   fetchFile() {
     this.driveService.getFile(this.fileId)
       .subscribe((data) => {
-        this.file = data as DriveDocument;
-        this.webContentLink = 'https://cors-anywhere.herokuapp.com/' + this.file.webContentLink;
+        this.file = data;
+        if (this.isMarkdown(this.file.fileExtension)) {
+          this.fetchFileContent();
+        } else {
+          this.markdown = null;
+        }
       });
   }
 
   fetchFileContent() {
     this.driveService.getFileContent(this.fileId)
       .subscribe((data) => {
-        // console.log(data);
         this.markdown = data.toString();
       });
+  }
+
+  isMarkdown(fileExtension: string): boolean {
+    return fileExtension === 'md';
   }
 }
