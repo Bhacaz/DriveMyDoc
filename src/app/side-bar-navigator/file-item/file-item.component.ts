@@ -20,4 +20,11 @@ export class FileItemComponent implements OnInit {
     });
   }
 
+  removeExtension(fileName): string {
+    const splitted = fileName.split('.');
+    if (splitted.length > 1) {
+      return splitted.slice(0, -1).join('.');
+    }
+    return fileName;
+  }
 }
