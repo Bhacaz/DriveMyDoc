@@ -3,7 +3,7 @@
 
 <mat-tree class="root-mat-tree" [(dataSource)]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [class.selected-node]="currentSelectedFileId === node.source.id">
+  <mat-tree-node class="mat-tree-node-file" *matTreeNodeDef="let node" matTreeNodePadding [class.selected-node]="currentSelectedFileId === node.source.id">
     <!-- use a disabled button to provide padding for tree leaf -->
     <a class="file-redirect" [routerLink]="['']" [queryParams]="{fileId: node.source.id}">
       {{removeExtension(node.name)}}
@@ -11,7 +11,7 @@
     <button mat-icon-button disabled></button>
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
-  <mat-tree-node class="file" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
     <a class="file-redirect" [routerLink]="['']" [queryParams]="{fileId: node.source.id}">
       {{removeExtension(node.name)}}
     </a>
