@@ -1,4 +1,4 @@
-name: Node CI
+name: Project CI
 
 on: [push]
 
@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build Angular app with Node.js 10
+    - name: Build Angular app
       uses: actions/setup-node@v1
       with:
         node-version: 10
@@ -21,5 +21,9 @@ jobs:
         mv CNAME dist/DriveMyDoc/
       env:
         CI: true
-
+       
+      -names: Deploy
+      if: ${{github.ref != 'master'}}
+      run: |
+        echo "Hello world"
     
