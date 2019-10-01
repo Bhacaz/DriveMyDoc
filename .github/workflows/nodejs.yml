@@ -20,8 +20,11 @@ jobs:
       env:
         CI: true
     - name: deploy
-      if: contains(github.ref, 'master')
+#       if: contains(github.ref, 'master')
+      env:  
+        GITHUB_REF: ${{ github.ref }}
       run: |
         echo "Hello world"
+        echo $GITHUB_REF
         git rev-parse --abbrev-ref HEAD
       
