@@ -1,0 +1,25 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build Angular app with Node.js 10
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10
+    - name: npm install, build
+      run: |
+        npm install
+        npm install -g @angular/cli
+        ng build --prod --base-href https://github.bhacaz.com/
+        mv CNAME dist/DriveMyDoc/
+      env:
+        CI: true
+
+    
