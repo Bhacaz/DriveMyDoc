@@ -4,12 +4,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
-    - name: Build Angular app
+    - name: setup nodejs
       uses: actions/setup-node@v1
       with:
         node-version: 10
@@ -21,9 +19,8 @@ jobs:
         mv CNAME dist/DriveMyDoc/
       env:
         CI: true
-       
-      -names: Deploy
+    - name: deploy
       if: ${{github.ref != 'master'}}
       run: |
         echo "Hello world"
-    
+      
