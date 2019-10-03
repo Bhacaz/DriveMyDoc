@@ -35,6 +35,7 @@ jobs:
         REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" && \
         OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)" && \
         REMOTE_BRANCH="gh-pages"
+        echo $REMOTE_REPO
         git init && \
         git config user.name "${GITHUB_ACTOR}" && \
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
