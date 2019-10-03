@@ -20,6 +20,8 @@ jobs:
       env:
         CI: true
     - name: GitHub Pages Deploy
+      env:
+        GH_PAT: ${{secrets.GH_PAT}}
       if: contains(github.ref, 'Actions')
       run: |
         set -e
