@@ -22,7 +22,7 @@ jobs:
     - name: GitHub Pages Deploy
       env:
         GH_PAT: ${{secrets.GH_PAT}}
-      if: contains(github.ref, 'Actions')
+      if: contains(github.ref, 'master')
       run: |
         set -e
         BUILD_DIR="dist/DriveMyDoc"
