@@ -1,4 +1,4 @@
-name: Project CI
+name: CI
 
 on: [push]
 
@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: setup nodejs
+    - name: Setup nodejs
       uses: actions/setup-node@v1
       with:
         node-version: 10
-    - name: npm install, build
+    - name: Build
       run: |
         npm install
         npm install -g @angular/cli
@@ -25,13 +25,8 @@ jobs:
       if: contains(github.ref, 'Actions')
       run: |
         set -e
-        
         BUILD_DIR="dist/DriveMyDoc"
-        echo "#################################################"
-        echo "Changing directory to 'BUILD_DIR' $BUILD_DIR ..."
         cd $BUILD_DIR
-        echo "#################################################"
-        
         echo "Now deploying to GitHub Pages..."
         REMOTE_REPO="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
         REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" && \
