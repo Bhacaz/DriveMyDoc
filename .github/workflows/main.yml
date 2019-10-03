@@ -46,4 +46,3 @@ jobs:
         rm -fr .git && \
         cd $GITHUB_WORKSPACE && \
         echo "Content of $BUILD_DIR has been deployed to GitHub Pages."
-
