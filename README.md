@@ -17,7 +17,7 @@ files and folders to try it out.
 
 ## Development
 
-[![Build Status](https://travis-ci.org/Bhacaz/DriveMyDoc.svg?branch=master)](https://travis-ci.org/Bhacaz/DriveMyDoc)
+[![Actions Status](https://github.com/Bhacaz/DriveMyDoc/workflows/CI/badge.svg)](https://github.com/Bhacaz/DriveMyDoc/actions)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
