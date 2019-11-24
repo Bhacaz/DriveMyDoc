@@ -4,6 +4,7 @@
   color: #9DAAB6;
   font-size: 12px;
   font-weight: bold;
+  padding: 0 !important;
 }
 
 .expend-row-button {
@@ -23,6 +24,7 @@
   color: #5C6975;
   padding-left: 1.2em;
   min-height: 2em;
+  height: 3em;
 }
 
 .mat-tree-node-file:hover {
@@ -34,9 +36,8 @@
   text-decoration: none;
   height: inherit;
   width: inherit;
-  padding-top: 1.2em;
-  padding-bottom: 1.2em;
-  color: inherit
+  color: inherit;
+  padding-top: 1.7em;
 }
 
 .selected-node {

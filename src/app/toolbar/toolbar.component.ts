@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, NgZone, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {environment} from '../../environments/environment';
+import {DriveFolder} from '../drive/drive-folder';
 
 declare const gapi: any;
 
@@ -10,6 +11,7 @@ declare const gapi: any;
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, AfterViewInit {
+  @Input() searchsidenav: any;
 
   user: any;
   auth2: any;

@@ -4,6 +4,14 @@
   color: #5C6975;
 }
 
-.side-bar-first-element {
-  padding-top: 2em;
+mat-list {
+  margin-top: 0 !important;
 }
+
+.mat-tree-node {
+  height: 3em;
+  .file-redirect {
+    padding-top: 1.7em;
+  }
+ }
+
