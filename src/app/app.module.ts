@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule,
-  MatIconModule,
+  MatButtonModule, MatFormFieldModule,
+  MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule, MatSidenavModule,
   MatToolbarModule,
   MatTreeModule
 } from '@angular/material';
@@ -25,6 +25,8 @@ import { FileItemComponent } from './side-bar-navigator/file-item/file-item.comp
 import { FolderItemComponent } from './side-bar-navigator/folder-item/folder-item.component';
 import {MarkdownModule, MarkedOptions, MarkedRenderer} from 'ngx-markdown';
 import {AuthorizationInterceptor} from './authorization-interceptor';
+import { SearchComponent } from './search/search.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {AuthorizationInterceptor} from './authorization-interceptor';
     FirstLevelFolderComponent,
     FileViewerComponent,
     FileItemComponent,
-    FolderItemComponent
+    FolderItemComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,10 @@ import {AuthorizationInterceptor} from './authorization-interceptor';
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSidenavModule,
+    FormsModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {

@@ -3,6 +3,7 @@
 .mat-list-item {
   font-size: 13px;
   color: inherit;
+  padding: 0 !important;
 }
 
 .file-redirect {
@@ -10,7 +11,7 @@
   text-decoration: none;
   height: inherit;
   width: inherit;
-  color: #5C6975;
+  color: inherit;
 }
 
 .file-redirect:hover {
@@ -27,3 +28,16 @@
 .selected-node:hover {
   background-color: white;
 }
+
+.mat-tree-node {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: #5C6975;
+  padding-left: 1.2em;
+  min-height: 2em;
+  height: 3em;
+}
+
